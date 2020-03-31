@@ -1,2 +1,2 @@
-# weather-journal-app
-Weather Journal App project for Udacity's Front End Developer Nanodegree.
+# Weather Journal App
+This is the third project for Udacity's Front End Developer Nanodegree.
