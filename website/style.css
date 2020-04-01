@@ -22,6 +22,20 @@ input, textarea, button {
     box-shadow: -9px -9px 16px -5px #FFFFFF, 9px 9px 16px -5px #A3B1C6;
 }
 
+input {
+    text-align: right;
+}
+
+label, button {
+    font-family: Arial, sans-serif;
+    font-weight: 300;
+    color: dimgrey;
+}
+
+textarea {
+    border: dimgrey;
+}
+
 #date-label {
     grid-area: date-label;
 }
