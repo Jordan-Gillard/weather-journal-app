@@ -1,0 +1,51 @@
+/* I used the following resource for inspiration on "Neumorphic" design:
+    https://uxplanet.org/neumorphism-in-user-interface-tutorial-c353698ac5c0 */
+
+* {
+    background-color: #E0E5EC;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 40px 100px 100px 100px 1fr 1fr;
+    grid-template-rows: 20px 20px 3fr 1fr;
+    grid-template-areas:
+    "date-label date temp-label temp data data"
+    "user-thoughts user-thoughts . . data data"
+    "user-input user-input user-input user-input data data"
+    ". . . submit data data";
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+}
+
+input, textarea, button {
+    box-shadow: -9px -9px 16px -5px #FFFFFF, 9px 9px 16px -5px #A3B1C6;
+}
+
+#date-label {
+    grid-area: date-label;
+}
+
+.date {
+    grid-area: date;
+}
+
+#temp-label {
+    grid-area: temp-label;
+}
+
+.temp {
+    grid-area: temp;
+}
+
+#user-thoughts {
+    grid-area: user-thoughts;
+}
+
+#user-input {
+    grid-area: user-input;
+}
+
+#submit-button {
+    grid-area: submit;
+}

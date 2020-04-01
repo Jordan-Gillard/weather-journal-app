@@ -4,15 +4,18 @@
 <head>
     <title>Weather Journal App</title>
     <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<label for="date">Date:</label>
-<input type="date" id="date">
+<label for="date" id="date-label">Date:</label>
+<input type="date" id="date" class="date">
 
-<label for="temperature">Temperature:</label>
-<input type="text" id="temperature">
+<label for="temperature" id="temp-label">Temperature:</label>
+<input type="text" id="temperature" class="temp">
 
-<label for="user-input">Tell us your thoughts:</label>
+<label for="user-input" id="user-thoughts">Tell us your thoughts:</label>
 <textarea id="user-input" rows="5" cols="33"></textarea>
+
+<button id="submit-button" type="submit">Submit</button>
 </body>
 </html>
