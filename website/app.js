@@ -13,20 +13,7 @@ async function getZipCodeWeather(zipCode = '') {
     }
 }
 
-const form = document.getElementById("temp-form");
-
-async function sendAndReceiveProjectData (event) {
-    event.preventDefault();
-    let date = document.getElementById("date").value;
-    let zipCode = document.getElementById("zip-code").value;
-    let temp = await getZipCodeWeather(zipCode);
-
-    let userInput = document.getElementById("user-input").value;
-    let data = {
-        "date": date,
-        "temp": temp,
-        "userInput": userInput,
-    };
+async function getData(data) {
     const response = await fetch('http://localhost:3000/project-data', {
         method: 'POST',
         headers: {
@@ -37,10 +24,56 @@ async function sendAndReceiveProjectData (event) {
     });
     console.log("response:", response);
     try {
-        const newData = await response.json();
-        return newData;
+        return await response.json();
     } catch (error) {
         console.log("error", error);
     }
 }
-form.addEventListener('submit', sendAndReceiveProjectData);
+
+function updateMostRecentEntry(data) {
+    const date = document.getElementById("date");
+    const temp = document.getElementById("temp");
+    const content = document.getElementById("content");
+    console.log("data", data);
+    console.log("date", date);
+    console.log("temp", temp);
+    console.log("content", content);
+    console.log("data.temp", data.temp);
+    console.log("data.temp.value", data.temp.value);
+    date.innerText = "Most recent entry date: " + data.date;
+    temp.innerText = "Most recent entry temp: " + data.temp;
+    content.innerText = "Most recent entry user input: " + data.userInput;
+    console.log("date element", date)
+}
+
+async function sendAndReceiveProjectData(event) {
+    event.preventDefault();
+    let date = document.getElementById("date-val").value;
+    let zipCode = document.getElementById("zip").value;
+    let temp = await getZipCodeWeather(zipCode);
+
+    let userInput = document.getElementById("feelings").value;
+    let data = {
+        "date": date,
+        "temp": temp,
+        "userInput": userInput,
+    };
+    updateMostRecentEntry(data);
+
+    await getData(data)
+        .then(updateUI);
+}
+
+const form = document.getElementById("generate");
+form.addEventListener('click', sendAndReceiveProjectData);
+
+function updateUI(newData) {
+    const dataDiv = document.getElementById('allData');
+    dataDiv.innerHTML = '';
+    function addDiv(dataDict) {
+        let newDiv = document.createElement("div");
+        newDiv.textContent = "Date: " + dataDict.date + ", Temperature: " + dataDict.temp + ", Response: " + dataDict.userInput + ".";
+        dataDiv.appendChild(newDiv);
+    }
+    newData.forEach(addDiv);
+}

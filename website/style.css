@@ -6,6 +6,7 @@
 }
 
 form {
+    grid-area: inputs;
     display: grid;
     grid-template-columns: 40px 130px 80px 100px;
     grid-template-rows: 20px 20px 3fr 1fr;
@@ -28,10 +29,15 @@ input {
     text-align: right;
 }
 
-label, button {
+label, button, div {
     font-family: Arial, sans-serif;
     font-weight: 300;
     color: dimgrey;
+}
+
+#entryHolder, div {
+    font-size: 10px;
+    grid-area: responses;
 }
 
 textarea {
@@ -58,11 +64,11 @@ textarea {
     grid-area: user-thoughts;
 }
 
-#user-input {
+#feelings {
     grid-area: user-input;
 }
 
-#submit-button {
+#generate {
     grid-area: submit;
 }
 
