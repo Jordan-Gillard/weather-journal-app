@@ -11,32 +11,22 @@ const port = 3000;
 
 app.use(express.static('website'));
 
-app.get('/', function (req, res) {
-    console.log("Get method received.");
-    res.send("hello world");
-});
-
 app.listen(port, () => {
     console.log(`App running on port ${port}`);
 });
 
-const weatherAPIKey = 'e542f831aca4693ae9887bddb0efe71d';
-// full URL=api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}
-const openWeatherMapBaseUrl = 'http://api.openweathermap.org/data/2.5/weather?q={';
+let projectData = [];
 
-let projectData = {'fake': 1};
-
-async function getCityWeather(url='') {
-    const cityWeather = await fetch(url);
-    try {
-        return cityWeather.json();
-    } catch (error) {
-        console.log('error', error);
-    }
-}
-
-function returnProjectdata (req, res) {
+function returnProjectData (req, res) {
     res.send(projectData);
 }
 
-app.get('/project-data', returnProjectdata);
+app.get('/project-data', returnProjectData);
+
+function addProjectData(req, res) {
+    console.log("Received Data:", req.body);
+    projectData.push(req.body);
+    res.send(projectData);
+}
+
+app.post('/project-data', addProjectData);

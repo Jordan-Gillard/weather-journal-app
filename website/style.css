@@ -5,17 +5,19 @@
     background-color: #E0E5EC;
 }
 
-body {
+form {
     display: grid;
-    grid-template-columns: 40px 100px 100px 100px 1fr 1fr;
+    grid-template-columns: 40px 130px 80px 100px;
     grid-template-rows: 20px 20px 3fr 1fr;
     grid-template-areas:
-    "date-label date temp-label temp data data"
-    "user-thoughts user-thoughts . . data data"
-    "user-input user-input user-input user-input data data"
-    ". . . submit data data";
+    "date-label date zip-code-label zip-code"
+    "user-thoughts user-thoughts . ."
+    "user-input user-input user-input user-input"
+    ". . . submit";
     grid-column-gap: 16px;
     grid-row-gap: 16px;
+    margin: fill;
+
 }
 
 input, textarea, button {
@@ -44,12 +46,12 @@ textarea {
     grid-area: date;
 }
 
-#temp-label {
-    grid-area: temp-label;
+#zip-code-label {
+    grid-area: zip-code-label;
 }
 
-.temp {
-    grid-area: temp;
+.zip-code {
+    grid-area: zip-code;
 }
 
 #user-thoughts {
@@ -62,4 +64,8 @@ textarea {
 
 #submit-button {
     grid-area: submit;
+}
+
+#data {
+    grid-area: data;
 }
