@@ -30,22 +30,6 @@ async function getData(data) {
     }
 }
 
-function updateMostRecentEntry(data) {
-    const date = document.getElementById("date");
-    const temp = document.getElementById("temp");
-    const content = document.getElementById("content");
-    console.log("data", data);
-    console.log("date", date);
-    console.log("temp", temp);
-    console.log("content", content);
-    console.log("data.temp", data.temp);
-    console.log("data.temp.value", data.temp.value);
-    date.innerText = "Most recent entry date: " + data.date;
-    temp.innerText = "Most recent entry temp: " + data.temp;
-    content.innerText = "Most recent entry user input: " + data.userInput;
-    console.log("date element", date)
-}
-
 async function sendAndReceiveProjectData(event) {
     event.preventDefault();
     let date = document.getElementById("date-val").value;
@@ -58,7 +42,6 @@ async function sendAndReceiveProjectData(event) {
         "temp": temp,
         "userInput": userInput,
     };
-    updateMostRecentEntry(data);
 
     await getData(data)
         .then(updateUI);
